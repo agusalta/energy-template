@@ -12,21 +12,21 @@ export const testimonialsSection = {
       visual: img1,
       occupation: "Administradora de Country Club",
       quote:
-        "Multigarden transformó completamente nuestros espacios verdes. Su sistema integral de mantenimiento nos permite disfrutar de jardines impecables todo el año, y el servicio de asesoramiento sin cargo es invaluable.",
+        "MGarden transformó completamente nuestros espacios verdes. Su sistema integral de mantenimiento nos permite disfrutar de jardines impecables todo el año, y el servicio de asesoramiento sin cargo es invaluable.",
     },
     {
       name: "Roberto Fernández",
       visual: img2,
       occupation: "Gerente de Consorcio",
       quote:
-        "Como administrador de un barrio cerrado, necesitaba un servicio confiable y profesional. El equipo de ingenieros agrónomos de Multigarden superó nuestras expectativas, especialmente con su enfoque sustentable y reciclaje de residuos.",
+        "Como administrador de un barrio cerrado, necesitaba un servicio confiable y profesional. El equipo de ingenieros agrónomos de MGarden superó nuestras expectativas, especialmente con su enfoque sustentable y reciclaje de residuos.",
     },
     {
       name: "Ana Sofía Morales",
       visual: img3,
       occupation: "Propietaria de Empresa",
       quote:
-        "El cuidado de nuestro parque industrial era un desafío hasta que conocimos Multigarden. Su experiencia en forestación y control de plagas nos dio la tranquilidad que buscábamos, manteniendo un ambiente saludable para nuestros empleados.",
+        "El cuidado de nuestro parque industrial era un desafío hasta que conocimos MGarden. Su experiencia en forestación y control de plagas nos dio la tranquilidad que buscábamos, manteniendo un ambiente saludable para nuestros empleados.",
     },
   ],
   visual: "customer-testimonials-image.jpg",

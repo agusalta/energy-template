@@ -29,6 +29,6 @@ export const projectsSection = {
       visual: img3,
     },
   ],
-  callToAction: "Inicia tu Proyecto de Paisajismo Profesional con Multigarden",
+  callToAction: "Inicia tu Proyecto de Paisajismo Profesional con MGarden",
   button: "Ver Más Proyectos",
 };

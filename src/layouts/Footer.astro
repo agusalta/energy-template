@@ -4,78 +4,75 @@ import Container from "../components/shared/Container.astro";
 import FooterNav from "../components/shared/FooterNav.astro";
 import Paragraph from "../components/shared/Paragraph.astro";
 
-const footerNav1 = [
+const servicios = [
   {
-    itemText: "Marketing",
-    itemLink: "#",
+    itemText: "Jardinería",
+    itemLink: "/servicios/jardineria",
   },
   {
-    itemText: "Analylitics",
-    itemLink: "#",
+    itemText: "Mantenimiento",
+    itemLink: "/servicios/mantenimiento",
   },
   {
-    itemText: "Commerce",
-    itemLink: "#",
+    itemText: "Diseño de Jardines",
+    itemLink: "/servicios/diseno",
   },
   {
-    itemText: "Insights",
-    itemLink: "#",
+    itemText: "Consultoría Ambiental",
+    itemLink: "/servicios/consultoria",
   },
 ];
 
-const footerSupport = [
+const empresa = [
   {
-    itemText: "Pricing",
-    itemLink: "#",
+    itemText: "Nosotros",
+    itemLink: "/nosotros",
   },
   {
-    itemText: "Guides",
-    itemLink: "#",
+    itemText: "Proyectos",
+    itemLink: "/proyectos",
+  },
+  {
+    itemText: "Equipo",
+    itemLink: "/equipo",
+  },
+  {
+    itemText: "Contacto",
+    itemLink: "/contacto",
+  },
+];
+
+const recursos = [
+  {
+    itemText: "Blog",
+    itemLink: "/blog",
+  },
+  {
+    itemText: "Guías",
+    itemLink: "/guias",
   },
   {
     itemText: "FAQ",
-    itemLink: "#",
+    itemLink: "/faq",
   },
   {
-    itemText: "Contact",
-    itemLink: "#",
+    itemText: "Testimonios",
+    itemLink: "/testimonios",
   },
 ];
 
-const footerCompany = [
+const legal = [
   {
-    itemText: "About",
-    itemLink: "#",
+    itemText: "Términos y Condiciones",
+    itemLink: "/terminos",
   },
   {
-    itemText: "Blog",
-    itemLink: "#",
+    itemText: "Política de Privacidad",
+    itemLink: "/privacidad",
   },
   {
-    itemText: "Jobs",
-    itemLink: "#",
-  },
-  {
-    itemText: "Parteners",
-    itemLink: "#",
-  },
-  {
-    itemText: "Jobs",
-    itemLink: "#",
-  },
-];
-const footerLegal = [
-  {
-    itemText: "Claim",
-    itemLink: "#",
-  },
-  {
-    itemText: "Privacy",
-    itemLink: "#",
-  },
-  {
-    itemText: "Terms",
-    itemLink: "#",
+    itemText: "Aviso Legal",
+    itemLink: "/legal",
   },
 ];
 ---
@@ -168,13 +165,13 @@ const footerLegal = [
         </div>
 
         <GroupFooterNav>
-          <FooterNav title={"Company"} navItems={footerCompany} />
-          <FooterNav title={"Solutions"} navItems={footerNav1} />
+          <FooterNav title={"Empresa"} navItems={empresa} />
+          <FooterNav title={"Servicios"} navItems={servicios} />
         </GroupFooterNav>
 
         <GroupFooterNav>
-          <FooterNav title={"Support"} navItems={footerSupport} />
-          <FooterNav title={"Ressources"} navItems={footerLegal} />
+          <FooterNav title={"Recursos"} navItems={recursos} />
+          <FooterNav title={"Legal"} navItems={legal} />
         </GroupFooterNav>
       </div>
     </Container>

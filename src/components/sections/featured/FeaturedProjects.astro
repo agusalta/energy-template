@@ -12,12 +12,72 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<section id="projects" class=`${className}`>
+<style>
+  .project-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .project-card:nth-child(1) { animation-delay: 0.3s; }
+  .project-card:nth-child(2) { animation-delay: 0.5s; }
+  .project-card:nth-child(3) { animation-delay: 0.7s; }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .title-animate {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .subtitle-animate {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.4s;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  section {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<section id="projects" class={`${className}`}>
   <Container
     className="mx-auto flex flex-col items-center justify-center text-center"
   >
-    <Title2>{projectsSection.title}</Title2>
-    <SubTitle2>
+    <Title2 className="title-animate">{projectsSection.title}</Title2>
+    <SubTitle2 className="subtitle-animate">
       {projectsSection.subheading1_1}
       <GradiantText> {projectsSection.subheading1_2}</GradiantText>
     </SubTitle2>
@@ -28,6 +88,7 @@ const { className } = Astro.props;
         projectsSection.projects.map((project) => {
           return (
             <FeaturedProject
+              className="project-card"
               title={project.title}
               description={project.description}
               location={project.location}

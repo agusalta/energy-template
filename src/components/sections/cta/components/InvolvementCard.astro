@@ -8,13 +8,14 @@ export interface Props {
   title: string;
   description: string;
   visual: string;
+  className?: string;
 }
 
-const { title, description, visual } = Astro.props;
+const { title, description, visual, className } = Astro.props;
 ---
 
 <div
-  class="group overflow-hidden rounded-lg h-full flex flex-col dark:bg-base-dark-800 shadow-lg dark:shadow-dark ring-1 ring-black/5 pt-2"
+  class={`group overflow-hidden rounded-lg h-full flex flex-col dark:bg-base-dark-800 shadow-lg dark:shadow-dark ring-1 ring-black/5 pt-2 ${className || ''}`}
 >
   <div class="grid grid-cols-1 content-between h-full mx-6 mb-6">
     <div class="flex">

@@ -11,13 +11,31 @@ export interface Props {
   description: string;
   location: string;
   visual: ImageMetadata;
+  className?: string;
 }
 
-const { title, description, location, visual } = Astro.props;
+const { title, description, location, visual, className } = Astro.props;
 ---
 
+<style>
+  .project-card {
+    animation: slideIn 0.8s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
 <div
-  class="group overflow-hidden rounded-lg h-full flex flex-col dark:bg-base-dark-800 shadow-lg dark:shadow-dark ring-1 ring-black/5 pt-2"
+  class={`group overflow-hidden rounded-lg h-full flex flex-col dark:bg-base-dark-800 shadow-lg dark:shadow-dark ring-1 ring-black/5 pt-2 project-card ${className}`}
 >
   <div class="relative h-96">
     <div class="overflow-hidden">

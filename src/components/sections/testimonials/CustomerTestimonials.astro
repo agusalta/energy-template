@@ -13,12 +13,12 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<section id="testimonials" class=`${className}`>
+<section id="testimonials" class={`${className} opacity-0 transition-all duration-1000 ease-in-out`}>
   <Container
     className="mx-auto flex flex-col items-center justify-center text-center"
   >
-    <Title2>{testimonialsSection.title}</Title2>
-    <SubTitle2>
+    <Title2 className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out">{testimonialsSection.title}</Title2>
+    <SubTitle2 className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out delay-100">
       <GradiantText> {testimonialsSection.subheading1_1}</GradiantText><br />
       {testimonialsSection.subheading1_2}
     </SubTitle2>
@@ -28,17 +28,72 @@ const { className } = Astro.props;
       class="mt-8 flex flex-col gap-8 midmd:flex-row text-heading-3 font-medium"
     >
       {
-        testimonialsSection.testimonials.map((testimonial) => {
+        testimonialsSection.testimonials.map((testimonial, index) => {
+          const delay = (index + 2) * 100; // Empezamos desde 200ms para dar tiempo a la animación del título
           return (
-            <Testimonial
-              name={testimonial.name}
-              visual={testimonial.visual}
-              occupation={testimonial.occupation}
-              quote={testimonial.quote}
-            />
+            <div class={`transform translate-y-8 opacity-0 transition-all duration-700 ease-out delay-[${delay}ms] testimonial-item`}>
+              <Testimonial
+                name={testimonial.name}
+                visual={testimonial.visual}
+                occupation={testimonial.occupation}
+                quote={testimonial.quote}
+              />
+            </div>
           );
         })
       }
     </div>
   </Container>
 </section>
+
+<script>
+  function animateOnScroll() {
+    // Animar el encabezado
+    const section = document.querySelector('#testimonials');
+    if (!section) return;
+
+    const headerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          section.classList.remove('opacity-0');
+          section.classList.add('opacity-100');
+          
+          // Animar título y subtítulo
+          const titleElements = section.querySelectorAll('.transform:not(.testimonial-item)');
+          titleElements.forEach(element => {
+            element.classList.remove('opacity-0', 'translate-y-4');
+            element.classList.add('opacity-100', 'translate-y-0');
+          });
+          
+          headerObserver.unobserve(section);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    headerObserver.observe(section);
+
+    // Animar cada testimonio individualmente
+    const testimonialItems = document.querySelectorAll('.testimonial-item');
+    const itemObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'translate-y-8');
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          itemObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    testimonialItems.forEach(item => {
+      itemObserver.observe(item);
+    });
+  }
+
+  // Ejecutar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', animateOnScroll);
+</script>

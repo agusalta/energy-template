@@ -5,7 +5,7 @@ import SubTitle2 from "../../shared/SubTitle2.astro";
 import Title2 from "../../shared/Title2.astro";
 import EmailForm from "./components/EmailForm.astro";
 import InvolvementCard from "./components/InvolvementCard.astro";
-import { getInvolvedSection } from "./data.ts";
+import { getInvolvedSection } from "./data";
 
 export interface Props {
   className?: string;
@@ -13,12 +13,63 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<section id="cta" class=`${className}`>
+<style>
+  @keyframes slideInFromTop {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-title {
+    opacity: 0;
+  }
+
+  .animate-subtitle {
+    opacity: 0;
+  }
+
+  .animate-card {
+    opacity: 0;
+  }
+
+  .card-delay-1 { animation-delay: 0.2s; }
+  .card-delay-2 { animation-delay: 0.4s; }
+  .card-delay-3 { animation-delay: 0.6s; }
+</style>
+
+<section id="cta" class={`${className}`}>
   <Container
     className="mx-auto flex flex-col items-center justify-center text-center"
   >
-    <Title2>{getInvolvedSection.title}</Title2>
-    <SubTitle2>
+    <Title2 className="animate-title">{getInvolvedSection.title}</Title2>
+    <SubTitle2 className="animate-subtitle">
       <GradiantText>{getInvolvedSection.subheading1_1}</GradiantText>
       {getInvolvedSection.subheading1_2}
     </SubTitle2>
@@ -26,9 +77,10 @@ const { className } = Astro.props;
   <Container className="space-y-10 md:sapce-y-12">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {
-        getInvolvedSection.initiatives.map((initiative) => {
+        getInvolvedSection.initiatives.map((initiative, index) => {
           return (
             <InvolvementCard
+              className={`animate-card card-delay-${index + 1}`}
               title={initiative.title}
               description={initiative.description}
               visual={initiative.visual}
@@ -39,7 +91,42 @@ const { className } = Astro.props;
     </div>
 
     <div class="flex justify-center">
-      <EmailForm />
+      <EmailForm className="animate-card card-delay-3" />
     </div>
   </Container>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('#cta');
+    if (!section) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const title = document.querySelector('.animate-title');
+          const subtitle = document.querySelector('.animate-subtitle');
+          const cards = document.querySelectorAll('.animate-card');
+
+          if (title) {
+            (title as HTMLElement).style.animation = 'slideInFromTop 0.8s ease-out forwards';
+          }
+
+          if (subtitle) {
+            (subtitle as HTMLElement).style.animation = 'fadeInScale 0.8s ease-out 0.3s forwards';
+          }
+
+          cards.forEach(card => {
+            (card as HTMLElement).style.animation = 'slideInFromBottom 0.8s ease-out forwards';
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    observer.observe(section);
+  });
+</script>

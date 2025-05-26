@@ -15,53 +15,42 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<section id="environment" class=`${className}`>
+<section id="environment" class={`${className} opacity-0 transition-all duration-1000 ease-in-out`}>
   <Container>
-    <Title2>{environmentalImpactSection.title}</Title2>
+    <Title2 className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out">{environmentalImpactSection.title}</Title2>
   </Container>
-  <Container className="flex flex-col midmd:flex-row gap-10 lg:gap-12 ">
-    <!-- <div
-      class="max-w-md mx-auto flex midmd:w-7/12 lg:w-3/4 flex-col align-self-start text-start"
-    > -->
+  <Container className="flex flex-col midmd:flex-row gap-10 lg:gap-12">
     <div
-      class="max-w-md mr-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col"
+      class="max-w-md mr-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col transform -translate-x-8 opacity-0 transition-all duration-700 ease-out"
     >
-      <SubTitle2>
+      <SubTitle2 className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out delay-100">
         {environmentalImpactSection.subheading1_1}
         <GradiantText>{environmentalImpactSection.subheading1_2}</GradiantText>
       </SubTitle2>
-      <Paragraph>
+      <Paragraph className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out delay-200">
         {environmentalImpactSection.description}
       </Paragraph>
       <ul class="mt-8 space-y-4 text-heading-3">
         {
-          environmentalImpactSection.impactPoints.map((point) => (
-            <li>
-              <Paragraph className="font-normal">
-                <span class="font-bold bg-box-bg rounded-full w-8 h-8 mr-3 text-primary inline-flex justify-center items-center">
-                  &checkmark;
-                </span>{" "}
-                {point}
-              </Paragraph>
-            </li>
-          ))
+          environmentalImpactSection.impactPoints.map((point, index) => {
+            const delay = (index + 3) * 100; // Empezamos desde 300ms para dar tiempo a la animación del título
+            return (
+              <li class={`transform translate-y-4 opacity-0 transition-all duration-700 ease-out delay-[${delay}ms] impact-point`}>
+                <Paragraph className="font-normal">
+                  <span class="font-bold bg-box-bg rounded-full w-8 h-8 mr-3 text-primary inline-flex justify-center items-center">
+                    &checkmark;
+                  </span>{" "}
+                  {point}
+                </Paragraph>
+              </li>
+            );
+          })
         }
       </ul>
-   
     </div>
     <div
-      class="midmd:max-w-none flex w-11/12 midmd:w-5/12 lg:w-1/2 midmd:h-auto"
+      class="midmd:max-w-none flex w-11/12 midmd:w-5/12 lg:w-1/2 midmd:h-auto transform translate-x-8 opacity-0 transition-all duration-700 ease-out"
     >
-      <!-- <div
-      class="max-w-md mx-auto midmd:max-w-none lg:mx-0 lg:pr-10 xl:pr-2 flex w-11/12 midmd:w-5/12 lg:w-1/4 midmd:h-[587px]"
-    > -->
-      <!-- <LazyImage
-        src={environmentalImpactSection.visual}
-        alt="environmental impact"
-        height="587"
-        width="388"
-        class="w-full h-full object-cover rounded-2xl"
-      /> -->
       <LazyImage
         src={environmentalImpactSection.visual}
         alt="environmental impact"
@@ -71,3 +60,69 @@ const { className } = Astro.props;
     </div>
   </Container>
 </section>
+
+<script>
+  function animateOnScroll() {
+    const section = document.querySelector('#environment');
+    if (!section) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          section.classList.remove('opacity-0');
+          section.classList.add('opacity-100');
+          
+          // Animar título
+          const title = section.querySelector('h2');
+          if (title) {
+            title.classList.remove('opacity-0', 'translate-y-4');
+            title.classList.add('opacity-100', 'translate-y-0');
+          }
+
+          // Animar contenido izquierdo
+          const leftContent = section.querySelector('.max-w-md.mr-auto');
+          if (leftContent) {
+            leftContent.classList.remove('opacity-0', '-translate-x-8');
+            leftContent.classList.add('opacity-100', 'translate-x-0');
+          }
+
+          // Animar imagen derecha
+          const rightContent = section.querySelector('.midmd\\:max-w-none');
+          if (rightContent) {
+            rightContent.classList.remove('opacity-0', 'translate-x-8');
+            rightContent.classList.add('opacity-100', 'translate-x-0');
+          }
+
+          // Animar subtítulo y descripción
+          const subtitle = section.querySelector('h3');
+          if (subtitle) {
+            subtitle.classList.remove('opacity-0', 'translate-y-4');
+            subtitle.classList.add('opacity-100', 'translate-y-0');
+          }
+
+          const description = section.querySelector('p');
+          if (description) {
+            description.classList.remove('opacity-0', 'translate-y-4');
+            description.classList.add('opacity-100', 'translate-y-0');
+          }
+
+          // Animar puntos de impacto
+          const impactPoints = section.querySelectorAll('.impact-point');
+          impactPoints.forEach(point => {
+            point.classList.remove('opacity-0', 'translate-y-4');
+            point.classList.add('opacity-100', 'translate-y-0');
+          });
+          
+          observer.unobserve(section);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    observer.observe(section);
+  }
+
+  // Ejecutar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', animateOnScroll);
+</script>
