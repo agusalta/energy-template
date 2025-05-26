@@ -1,0 +1,44 @@
+---
+import ClientMarqueeReact from "./components/ClientMarqueeReact";
+
+const clients = [
+  { name: "BIMBO ARGENTINA", logo: "/images/clients/bimbo.png" },
+  { name: "BIOTEC S.A.", logo: "/images/clients/biotec.png" },
+  { name: "CUZZUOL S.R.L.", logo: "/images/clients/cuzzuol.png" },
+  { name: "Club de Campo LAS MIL ROSAS", logo: "/images/clients/las-mil-rosas.png" },
+  { name: "Campo de Golf LA ORQUIDEA", logo: "/images/clients/la-orquidea.png" },
+  { name: "Barrio Cerrado LA CASCADA", logo: "/images/clients/la-cascada.png" },
+  { name: "Barrio Cerrado PUEYRREDON", logo: "/images/clients/pueyrredon.png" },
+  { name: "Barrio Cerrado SAUSALITO", logo: "/images/clients/sausalito.png" },
+  { name: "Barrio Cerrado LOS FRESNOS", logo: "/images/clients/los-fresnos.png" },
+  { name: "Barrio Cerrado BUEN RETIRO", logo: "/images/clients/buen-retiro.png" },
+  { name: "Country CUBA", logo: "/images/clients/cuba.png" },
+  { name: "Country MAYLING", logo: "/images/clients/mayling.png" },
+  { name: "Country SAN JORGE", logo: "/images/clients/san-jorge.png" },
+  { name: "Consorcio MANZONE 1027", logo: "/images/clients/manzone.png" },
+  { name: "Consorcio INGENIEROS 109", logo: "/images/clients/ingenieros.png" },
+  { name: "Consorcio EUGENIO BLANCO", logo: "/images/clients/eugenio-blanco.png" },
+  { name: "KEYDATA", logo: "/images/clients/keydata.png" },
+  { name: "GRUPO MAIPU COMPAÑIA DE SERVICIOS", logo: "/images/clients/maipu.png" },
+  { name: "TRANSTEX", logo: "/images/clients/transtex.png" },
+  { name: "TECNOCOCINA", logo: "/images/clients/tecno-cocina.png" }
+];
+
+export interface Props {
+  className?: string;
+}
+
+---
+
+<section class="py-16 bg-base dark:bg-base-dark">
+  <div class="w-full">
+    <div class="container mx-auto px-4 mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white">Nuestros Clientes</h2>
+      <p class="text-center text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+        Empresas y barrios que confían en nuestros servicios de energía y mantenimiento
+      </p>
+    </div>
+    
+    <ClientMarqueeReact client:only="react" clients={clients} />
+  </div>
+</section> 
