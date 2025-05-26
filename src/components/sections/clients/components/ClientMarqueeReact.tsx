@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Marquee from 'react-fast-marquee';
 import { useThemeStore } from '../../../../store/themeStore';
 
