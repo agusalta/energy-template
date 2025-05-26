@@ -1,0 +1,40 @@
+---
+import Container from "../components/shared/Container.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import Layout from "../layouts/Layout.astro";
+
+const content = [
+  {
+    subtitle: "1. Información Legal",
+    text: "MGarden es una empresa registrada en Argentina. Nuestro sitio web está operado y mantenido de acuerdo con las leyes argentinas."
+  },
+  {
+    subtitle: "2. Propiedad Intelectual",
+    text: "Todo el contenido de este sitio web, incluyendo textos, gráficos, logotipos, imágenes y software, está protegido por derechos de autor y otras leyes de propiedad intelectual."
+  },
+  {
+    subtitle: "3. Limitación de Responsabilidad",
+    text: "MGarden no será responsable por ningún daño que pueda surgir del uso o la imposibilidad de usar los materiales en nuestro sitio web."
+  }
+];
+---
+<Layout title="Aviso Legal">
+  <div class="pt-24">
+    <Container className="py-16">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-12">Aviso Legal</h1>
+        
+        <div class="space-y-6">
+          {content.map((item) => (
+            <div>
+              <h3 class="text-xl font-medium mb-3">{item.subtitle}</h3>
+              <Paragraph className="text-gray-600 dark:text-gray-300">
+                {item.text}
+              </Paragraph>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </div>
+</Layout> 

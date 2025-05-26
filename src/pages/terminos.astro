@@ -1,0 +1,47 @@
+---
+import Container from "../components/shared/Container.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import Layout from "../layouts/Layout.astro";
+
+const content = [
+  {
+    subtitle: "1. Aceptación de los Términos",
+    text: "Al acceder y utilizar este sitio web, usted acepta estar sujeto a estos términos y condiciones de uso, todas las leyes y regulaciones aplicables, y acepta que es responsable del cumplimiento de las leyes locales aplicables."
+  },
+  {
+    subtitle: "2. Uso de la Licencia",
+    text: "Se le otorga una licencia limitada, no exclusiva y no transferible para acceder y ver el contenido de este sitio web para uso personal y no comercial."
+  },
+  {
+    subtitle: "3. Limitaciones",
+    text: "Está prohibido modificar o copiar los materiales, usar los materiales para cualquier propósito comercial, o intentar descompilar o realizar ingeniería inversa de cualquier software contenido en el sitio web."
+  }
+];
+---
+
+<Layout title="Términos y Condiciones">
+  <div class="pt-24">
+    <Container className="py-16">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-12">Términos y Condiciones</h1>
+        
+        <div class="space-y-6">
+          {content.map((item) => (
+            <div>
+              <h3 class="text-xl font-medium mb-3">{item.subtitle}</h3>
+              <Paragraph className="text-gray-600 dark:text-gray-300">
+                {item.text}
+              </Paragraph>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </div>
+</Layout>
+
+<style>
+  section {
+    scroll-margin-top: 6rem;
+  }
+</style> 

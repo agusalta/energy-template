@@ -1,0 +1,41 @@
+---
+import Container from "../components/shared/Container.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import Layout from "../layouts/Layout.astro";
+
+const content = [
+  {
+    subtitle: "1. Recopilación de Información",
+    text: "Recopilamos información que usted nos proporciona directamente, como cuando se registra para recibir nuestro boletín o nos contacta a través de nuestro formulario de contacto."
+  },
+  {
+    subtitle: "2. Uso de la Información",
+    text: "Utilizamos la información recopilada para proporcionar, mantener y mejorar nuestros servicios, comunicarnos con usted y personalizar su experiencia."
+  },
+  {
+    subtitle: "3. Protección de Datos",
+    text: "Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger sus datos personales contra el acceso no autorizado o la divulgación."
+  }
+];
+---
+
+<Layout title="Política de Privacidad">
+  <div class="pt-24">
+    <Container className="py-16">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-12">Política de Privacidad</h1>
+        
+        <div class="space-y-6">
+          {content.map((item) => (
+            <div>
+              <h3 class="text-xl font-medium mb-3">{item.subtitle}</h3>
+              <Paragraph className="text-gray-600 dark:text-gray-300">
+                {item.text}
+              </Paragraph>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </div>
+</Layout> 
