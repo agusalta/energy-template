@@ -1,5 +1,9 @@
 ---
 import ClientMarqueeReact from "./components/ClientMarqueeReact";
+import Container from "../../shared/Container.astro";
+import GradiantText from "../../shared/GradiantText.astro";
+import SubTitle2 from "../../shared/SubTitle2.astro";
+import Title2 from "../../shared/Title2.astro";
 
 const clients = [
   { name: "BIMBO ARGENTINA", logo: "/images/clients/bimbo.png" },
@@ -31,13 +35,14 @@ export interface Props {
 ---
 
 <section class="py-16 bg-base dark:bg-base-dark">
-  <div class="w-full">
-    <div class="container mx-auto px-4 mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white">Nuestros Clientes</h2>
-      <p class="text-center text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-        Empresas y barrios que confían en nuestros servicios de energía y mantenimiento
-      </p>
-    </div>
+  <div class="w-[full]">
+    <Container className="mx-auto flex flex-col items-center justify-center text-center">
+      <Title2>Nuestros Clientes</Title2>
+      <SubTitle2>
+        Empresas y Barrios <br />
+        <GradiantText>que confían en nosotros</GradiantText>
+      </SubTitle2>
+    </Container>
     
     <ClientMarqueeReact client:only="react" clients={clients} />
   </div>

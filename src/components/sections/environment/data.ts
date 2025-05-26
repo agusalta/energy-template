@@ -2,10 +2,10 @@ import img from "./assets/green-hands.png";
 
 export const environmentalImpactSection = {
   title: "Compromiso Ambiental",
-  subheading1_1: "Eligiendo Multigarden para un",
-  subheading1_2: " Futuro Más Verde y Saludable",
+  subheading1_1: "Eligiendo MGarden para un",
+  subheading1_2: "Futuro Más Verde y Saludable",
   description:
-    "En Multigarden, estamos comprometidos con la sanidad ambiental y el cuidado del medio ambiente. Al elegir nuestros servicios integrales de jardinería, contribuis al:",
+    "En MGarden, estamos comprometidos con la sanidad ambiental y el cuidado del medio ambiente. Al elegir nuestros servicios integrales de jardinería, contribuis al:",
   impactPoints: [
     "Reciclaje de Residuos Orgánicos",
     "Creación de Compost Natural como Fertilizante",
@@ -16,6 +16,6 @@ export const environmentalImpactSection = {
     "Promoción de Espacios Verdes Sustentables",
   ],
   visual: img,
-  callToAction: "Únete a Nuestro Compromiso con el Medio Ambiente",
+  callToAction: "Unite a Nuestro Compromiso con el Medio Ambiente",
   button: "Conocer Más",
 };
