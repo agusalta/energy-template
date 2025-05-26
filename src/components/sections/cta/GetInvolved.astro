@@ -14,31 +14,9 @@ const { className } = Astro.props;
 ---
 
 <style>
-  @keyframes slideInFromTop {
+  @keyframes fadeInUp {
     from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInScale {
-    from {
-      transform: scale(0.9);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideInFromBottom {
-    from {
-      transform: translateY(50px);
+      transform: translateY(20px);
       opacity: 0;
     }
     to {
@@ -109,15 +87,15 @@ const { className } = Astro.props;
           const cards = document.querySelectorAll('.animate-card');
 
           if (title) {
-            (title as HTMLElement).style.animation = 'slideInFromTop 0.8s ease-out forwards';
+            (title as HTMLElement).style.animation = 'fadeInUp 0.8s ease-out forwards';
           }
 
           if (subtitle) {
-            (subtitle as HTMLElement).style.animation = 'fadeInScale 0.8s ease-out 0.3s forwards';
+            (subtitle as HTMLElement).style.animation = 'fadeInUp 0.8s ease-out 0.2s forwards';
           }
 
           cards.forEach(card => {
-            (card as HTMLElement).style.animation = 'slideInFromBottom 0.8s ease-out forwards';
+            (card as HTMLElement).style.animation = 'fadeInUp 0.8s ease-out forwards';
           });
 
           observer.unobserve(entry.target);
