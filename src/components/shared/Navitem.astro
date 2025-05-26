@@ -6,11 +6,12 @@ export interface Props {
 const { href, text } = Astro.props;
 ---
 
-<li>
+<li class="relative group">
   <a
     href={href}
-    class="font-medium hover:text-primary-400 ease-linear duration-300 py-3"
+    class="relative inline-block py-2 transition-all duration-300 hover:text-primary dark:hover:text-primary"
   >
     {text}
+    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
   </a>
 </li>
