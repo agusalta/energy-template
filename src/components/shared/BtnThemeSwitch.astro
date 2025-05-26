@@ -8,13 +8,13 @@ const { className, variant } = Astro.props;
 
 const getThemeStyle = (variant: "primary" | "secondary" | "cta") => {
   if (variant === "primary") {
-    return "bg-transparent border-primary hover:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900";
+    return "bg-transparent border-primary hover:border-primary-800 hover:bg-primary-100/20 dark:hover:bg-primary-900/20 backdrop-blur-sm";
   }
   if (variant === "secondary") {
-    return "bg-transparent border-secondary hover:border-secondary-800";
+    return "bg-transparent border-secondary hover:border-secondary-800 hover:bg-secondary-100/20 dark:hover:bg-secondary-900/20 backdrop-blur-sm";
   }
   if (variant === "cta") {
-    return "bg-transparent border-cta hover:border-cta-800";
+    return "bg-transparent border-cta hover:border-cta-800 hover:bg-cta-100/20 dark:hover:bg-cta-900/20 backdrop-blur-sm";
   }
   return "";
 };
@@ -32,9 +32,8 @@ const getTextColor = (variant: "primary" | "secondary" | "cta") => {
   return "";
 };
 
-const base =
-  "outline-none flex relative text-heading-2 rounded-full p-2 lg:p-3 border";
-const animation = "duration-300 ease-linear";
+const base = "outline-none flex relative text-heading-2 rounded-full p-2 lg:p-3 border transition-all";
+const animation = "duration-500 ease-in-out transform hover:scale-105 active:scale-95";
 ---
 
 <button
@@ -44,6 +43,7 @@ const animation = "duration-300 ease-linear";
   ${animation}
   ${getTextColor(variant)}
   ${getThemeStyle(variant)}
+  hover:shadow-lg hover:shadow-primary/20 dark:hover:shadow-primary-900/20
   hover:after:opacity-100 hover:after:scale-[2.5]
   ${className}
   `}
@@ -54,7 +54,7 @@ const animation = "duration-300 ease-linear";
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    class="w-6 h-6 dark:flex hidden"
+    class="w-6 h-6 dark:flex hidden transition-transform duration-500 hover:rotate-45"
   >
     <path
       stroke-linecap="round"
@@ -68,7 +68,7 @@ const animation = "duration-300 ease-linear";
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    class="w-6 h-6 dark:hidden"
+    class="w-6 h-6 dark:hidden transition-transform duration-500 hover:rotate-45"
   >
     <path
       stroke-linecap="round"

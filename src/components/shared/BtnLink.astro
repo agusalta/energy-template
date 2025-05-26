@@ -6,19 +6,20 @@ export interface Props {
   text: string;
   className?: string;
   variant: "primary" | "secondary" | "cta";
+  isNavbar?: boolean;
 }
 
-const { href, text, className, variant } = Astro.props;
+const { href, text, className, variant, isNavbar = false } = Astro.props;
 
 const getThemeStyle = (variant: "primary" | "secondary" | "cta") => {
   if (variant === "primary") {
-    return "bg-primary relative border-primary hover:border-primary-800";
+    return "bg-primary relative border-primary";
   }
   if (variant === "secondary") {
-    return "bg-secondary relative border-secondary hover:border-secondary-800";
+    return "bg-secondary relative border-secondary";
   }
   if (variant === "cta") {
-    return "bg-cta relative border-cta hover:border-cta-800";
+    return "bg-cta relative border-cta";
   }
   return "";
 };
@@ -36,16 +37,15 @@ const getTextColor = (variant: "primary" | "secondary" | "cta") => {
   return "";
 };
 
-const base =
-  "rounded-lg outline-none relative overflow-hidden px-6 py-3 border";
-const animation = "duration-300 ease-linear";
+const base = isNavbar 
+  ? "rounded-lg outline-none relative overflow-hidden px-4 py-2 border transition-all duration-300 ease-linear hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md focus:ring-2 focus:ring-primary/50 focus:outline-none"
+  : "rounded-lg outline-none relative overflow-hidden px-6 py-3 border transition-all duration-300 ease-linear hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-primary/50 focus:outline-none";
 ---
 
 <a
   href={href}
   class={` 
     ${base} 
-    ${animation}
     ${getTextColor(variant)}
     ${getThemeStyle(variant)}
     ${className}`}
