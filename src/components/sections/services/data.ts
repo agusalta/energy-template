@@ -1,59 +1,55 @@
 import img1 from "./assets/solar3.png";
 import img2 from "./assets/wind.png";
-// TODO
 import img3 from "./assets/hydro.png";
 import img4 from "./assets/storage.png";
-// TODO
 import img5 from "./assets/smart-grid.png";
 import img6 from "./assets/green.png";
 
 export const servicesSectionData = {
-  title: "Our Sustainable Energy Solutions",
+  title: "Servicios",
   subheading: {
-    text1_1: "Experience a Revolution in Energy Solutions - ",
-    text1_2: "Embrace Innovation, Embrace Sustainability.",
-    text2:
-      "We're here to Empower Your Life and Spaces with Clean, Renewable Energy, Paving the Way for a Brighter and Greener Tomorrow.",
+    text1_1: "Creamos un sistema integral de mantenimiento para que usted pueda ",
+    text1_2: "disfrutar siempre de sus espacios verdes",
+    text2: "Mantenimiento integral de parques y jardines. Corte, poda, forestación, paisajismo, riego, saneamiento ambiental y más. Nos encargamos de que los espacios verdes estén siempre bien cuidados.",
   },
   services: [
     {
-      title: "Solar Power Solutions",
+      title: "Parques y jardines",
       briefDescription:
-        "Harness the power of the sun with our state-of-the-art solar panels. Generate clean energy for your home or business and reduce your carbon footprint.",
+        "Corte de césped, poda, desmalezado, control de plagas y más. Todo para que el espacio verde esté cuidado, siempre.",
       visual: img1,
     },
     {
-      title: "Wind Energy Harvesting",
+      title: "Diseño de espacios verdes",
       briefDescription:
-        "Embrace the power of the wind. Our wind energy solutions provide a sustainable and efficient way to generate electricity, ensuring a greener future.",
+        "Te ayudamos a pensar y transformar el espacio. Recomendamos qué plantas usar, cómo distribuirlas y qué materiales convienen.",
       visual: img2,
     },
     {
-      title: "Hydropower Systems",
+      title: "Riego automatizado",
       briefDescription:
-        "Flow with nature. Our hydropower systems harness the energy of flowing water, delivering reliable and eco-friendly electricity to your doorstep.",
+        "Instalamos sistemas de riego automático para optimizar el consumo de agua y mantener el verde sano sin esfuerzo.",
       visual: img3,
     },
     {
-      title: "Energy Storage Solutions",
+      title: "Servicios por proyecto",
       briefDescription:
-        "Store excess energy efficiently. Our cutting-edge energy storage solutions ensure uninterrupted power supply, even during cloudy days or low-wind periods.",
+        "¿Necesitás algo puntual? También hacemos trabajos específicos como podas grandes, limpieza o acondicionamiento general.",
       visual: img4,
     },
     {
-      title: "Smart Grid Technology",
+      title: "Visitas regulares",
       briefDescription:
-        "Navigate the future with our smart grid technology. Optimize energy distribution, monitor consumption, and contribute to a more sustainable and efficient energy ecosystem.",
+        "Armamos un plan de mantenimiento anual con visitas periódicas, para que no tengas que preocuparte por nada.",
       visual: img5,
     },
     {
-      title: "Energy-efficient Lighting",
+      title: "Atención personalizada",
       briefDescription:
-        "Illuminate your space responsibly. Our energy-efficient lighting solutions provide bright, sustainable, and cost-effective illumination for homes and businesses.",
+        "Escuchamos lo que necesitás y trabajamos con responsabilidad. Cada espacio verde tiene su lógica y su forma de cuidarse.",
       visual: img6,
     },
   ],
-  callToAction:
-    "Discover the Future of Green Energy. Choose Your Sustainable Solution Today!",
-  buttonText: "Explore More",
+  callToAction: "Contactanos para armar un plan a medida.",
+  buttonText: "Quiero saber más",
 };

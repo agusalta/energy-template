@@ -4,30 +4,30 @@ import svg3 from "./assets/green-3.svg?raw";
 import svg4 from "./assets/green-4.svg?raw";
 
 export const getInvolvedSection = {
-  title: "Get Involved",
-  subheading1_1: "Join Us ",
-  subheading1_2: "in Building a Sustainable Future",
+  title: "Unite a Nosotros",
+  subheading1_1: "Construyamos Juntos ",
+  subheading1_2: "Espacios Verdes Sustentables",
   initiatives: [
     {
-      title: "Community Outreach",
+      title: "Asesoramiento Gratuito",
       description:
-        "Discover our community initiatives aimed at promoting awareness and education on sustainable living. Join us in creating a positive impact together.",
+        "Aprovecha nuestro servicio de asesoramiento sin cargo en cuidado de espacios verdes. Nuestros ingenieros agrónomos te guiarán para crear y mantener jardines saludables y sustentables.",
       visual: svg2,
     },
     {
-      title: "Green Events",
+      title: "Programa de Compostaje",
       description:
-        "Participate in our upcoming green events. From tree-planting drives to eco-friendly workshops, be a part of the movement towards a healthier planet.",
+        "Participa en nuestro programa de reciclaje de residuos orgánicos. Convertimos los desechos de poda y césped en compost natural, eliminando quemas contaminantes y creando fertilizantes ecológicos.",
       visual: svg4,
     },
     {
-      title: "Partnerships for Sustainability",
+      title: "Alianzas con Proveedores Premium",
       description:
-        "Explore our partnerships with organizations dedicated to environmental conservation. Learn how you can contribute to sustainable practices through collaboration.",
+        "Benefíciate de nuestras alianzas con marcas líderes como Toro, Scotts y Jacklin. Accede a productos de primera línea con precios preferenciales para el cuidado profesional de tus espacios verdes.",
       visual: svg3,
     },
   ],
   visual: "get-involved-section-image.jpg",
-  callToAction: "Take Action Today for a Greener Tomorrow",
-  button: "Join Our Initiatives",
+  callToAction: "Comienza Hoy tu Proyecto de Paisajismo Sustentable",
+  button: "Solicitar Asesoramiento",
 };

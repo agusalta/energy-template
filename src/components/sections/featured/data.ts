@@ -3,32 +3,32 @@ import img2 from "./assets/wind-person.png";
 import img3 from "./assets/amazonas2.png";
 
 export const projectsSection = {
-  title: "Featured Projects",
-  subheading1_1: "Explore Our Successful ",
-  subheading1_2: "Green Energy Endeavors",
+  title: "Proyectos Destacados",
+  subheading1_1: "Explora Nuestros Exitosos ",
+  subheading1_2: "Proyectos de Paisajismo Integral",
   projects: [
     {
-      title: "Solar-Powered Community",
+      title: "Country Las Mil Rosas",
       description:
-        "Empowering a community with sustainable solar energy solutions. Learn how [Company Name] brought clean and affordable electricity to homes, schools, and businesses.",
-      location: "Los Angeles, California, USA",
+        "Transformación completa del paisajismo en este exclusivo club de campo. Implementamos un sistema integral de mantenimiento que incluye forestación especializada, riego por aspersión y control ecológico de plagas.",
+      location: "San Martín de los Andes, Argentina",
       visual: img1,
     },
     {
-      title: "Wind Farm Innovation",
+      title: "Parque Industrial Bimbo",
       description:
-        "Revolutionizing wind energy with our innovative wind farm. Discover how [Company Name] is harnessing the power of the wind to create a greener and more sustainable future.",
-      location: "Scottish Highlands, United Kingdom",
+        "Desarrollo sustentable de espacios verdes corporativos. Creamos un ambiente de trabajo saludable mediante la implementación de nuestro sistema de reciclaje de residuos orgánicos y saneamiento ambiental.",
+      location: "Parque Industrial Pilar, Buenos Aires",
       visual: img2,
     },
     {
-      title: "Hydropower Plant Success",
+      title: "Barrios Cerrados Premium",
       description:
-        "A journey into our hydropower success story. Explore how [Company Name] transforms the energy of flowing water into a reliable and eco-friendly power source.",
-      location: "Amazon Rainforest, South America",
+        "Mantenimiento integral de múltiples barrios cerrados en Pilar. Nuestro equipo de ingenieros agrónomos desarrolló soluciones personalizadas de paisajismo, incluyendo vivero propio y provisión de productos afines.",
+      location: "Pilar, Zona Norte - Buenos Aires",
       visual: img3,
     },
   ],
-  callToAction: "Embark on a Green Energy Journey with [Company Name]",
-  button: "View More Projects",
+  callToAction: "Inicia tu Proyecto de Paisajismo Profesional con Multigarden",
+  button: "Ver Más Proyectos",
 };

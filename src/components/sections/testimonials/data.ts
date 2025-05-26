@@ -3,33 +3,33 @@ import img2 from "./assets/person2.png";
 import img3 from "./assets/person3.png";
 
 export const testimonialsSection = {
-  title: "What Our Customers Say",
-  subheading1_1: "Hear from Those",
-  subheading1_2: " Who Have Embraced Sustainable Living",
+  title: "Lo Que Dicen Nuestros Clientes",
+  subheading1_1: "Testimonios de Quienes",
+  subheading1_2: " Confían en Nuestro Servicio Profesional",
   testimonials: [
     {
-      name: "Emily Johnson",
+      name: "María Elena Vásquez",
       visual: img1,
-      occupation: "Homeowner",
+      occupation: "Administradora de Country Club",
       quote:
-        "Switching to [Company Name] was the best decision I made. Our home is now powered by clean energy, and I feel great knowing I'm contributing to a healthier planet.",
+        "Multigarden transformó completamente nuestros espacios verdes. Su sistema integral de mantenimiento nos permite disfrutar de jardines impecables todo el año, y el servicio de asesoramiento sin cargo es invaluable.",
     },
     {
-      name: "Carlos Rodriguez",
+      name: "Roberto Fernández",
       visual: img2,
-      occupation: "Business Owner",
+      occupation: "Gerente de Consorcio",
       quote:
-        "As a business owner, sustainability is crucial. [Company Name] provided us with a seamless transition to green energy, and we've seen a positive impact on both the environment and our operating costs.",
+        "Como administrador de un barrio cerrado, necesitaba un servicio confiable y profesional. El equipo de ingenieros agrónomos de Multigarden superó nuestras expectativas, especialmente con su enfoque sustentable y reciclaje de residuos.",
     },
     {
-      name: "Sophie Chen",
+      name: "Ana Sofía Morales",
       visual: img3,
-      occupation: "Environmental Advocate",
+      occupation: "Propietaria de Empresa",
       quote:
-        "I'm passionate about the environment, and [Company Name] aligns perfectly with my values. Their commitment to renewable energy and reducing carbon footprint is commendable.",
+        "El cuidado de nuestro parque industrial era un desafío hasta que conocimos Multigarden. Su experiencia en forestación y control de plagas nos dio la tranquilidad que buscábamos, manteniendo un ambiente saludable para nuestros empleados.",
     },
   ],
   visual: "customer-testimonials-image.jpg",
-  callToAction: "Join Our Growing Community of Satisfied Customers",
-  button: "Get Started",
+  callToAction: "Únete a Nuestra Comunidad de Clientes Satisfechos",
+  button: "Solicitar Presupuesto",
 };
