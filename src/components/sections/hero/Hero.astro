@@ -8,14 +8,14 @@ import Title from "../../shared/Title.astro";
 import LazyImage from "../../shared/LazyImage.astro";
 
 const heroSection = {
-  headline1: "Powering",
-  headline2: "Tomorrow,",
-  headline3: "Sustainably",
-  headline4: "Today!",
-  subheading1: "Join us in the green energy revolution",
-  subheading2: "and be part of a sustainable future",
-  subheading3: "for generations to come.",
-  buttonText: "Get Powered Today!",
+  headline1: "Mantenimiento",
+  headline2: "profesional",
+  headline3: "de parques",
+  headline4: "y jardines",
+  subheading1: "Creamos y cuidamos espacios verdes",
+  subheading2: "para empresas, countries y consorcios.",
+  subheading3: "Trabajo serio, soluciones concretas, todo el año.",
+  buttonText: "Contactanos",
   backgroundImage: "hero-background-image.jpg",
 };
 
@@ -26,42 +26,102 @@ export interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<section class=`relative  ${className} w-full h-[80vh]` id="hero">
-  <div class="w-full h-[80vh] pt-[100px]">
-    <div
-      class="w-full h-full grid grid-cols-1 md:grid-cols-2 justify-end bg-base-100 dark:bg-base-dark-900"
-    >
-      <div class="justify-center flex flex-col text-center md:ml-auto">
-        <Title className="">
-          {heroSection.headline1}
-          <GradiantText
-            >{" " + heroSection.headline2}
-            <br />
-            {" " + heroSection.headline3}
-          </GradiantText>{heroSection.headline4}
-        </Title>
-        <SubTitle className=" mt-10 leading-9 italic">
-          {heroSection.subheading1}
-          <br />
-          {heroSection.subheading2}<br />
-          {heroSection.subheading3}
-        </SubTitle>
-
-      </div>
-      <div class="flex relative pt-10 md:p-0">
-        <LazyImage
-          src={heroImg}
-          alt="A picture of a wind turbine."
-          className="w-full h-full object-cover"
-        />
-        <svg
-          class="fill-base-100 dark:fill-base-dark-900 z-10 absolute top-0 start-0 h-full hidden md:block"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 500 400"
-        >
-          <path d="M0 0l0 400L100 0Z"> </path>
-        </svg>
+<section class={`relative ${className} w-full min-h-[85vh] sm:min-h-[100vh] flex items-center py-12 sm:py-24 md:py-32 overflow-hidden`} id="hero">
+  <!-- Fondo con efecto parallax -->
+  <div class="absolute inset-0 bg-gradient-to-b from-base-100/95 via-base-100/80 to-base-100/60 dark:from-base-dark-900/95 dark:via-base-dark-900/80 dark:to-base-dark-900/60 z-10"></div>
+  <div class="w-full h-full absolute transform scale-110">
+    <LazyImage
+      src={heroImg}
+      alt="Imagen de jardín en mantenimiento"
+      className="w-full h-full object-cover parallax-bg"
+    />
+  </div>
+  
+  <!-- Elementos decorativos -->
+  <div class="absolute inset-0 z-10">
+    <div class="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-pulse animation-delay-1000"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+    <div class="grid grid-cols-1 gap-6 sm:gap-8 lg:gap-12 items-center">
+      <div class="text-center lg:text-left space-y-4 sm:space-y-8">
+        <div class="space-y-3 sm:space-y-6">
+          <div class="animate-fade-in-up">
+            <Title className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
+              {heroSection.headline1}
+              <GradiantText>
+                {" " + heroSection.headline2}
+                <br />
+                {" " + heroSection.headline3}
+              </GradiantText>
+              {heroSection.headline4}
+            </Title>
+          </div>
+          <div class="animate-fade-in-up animation-delay-200">
+            <SubTitle className="mt-4 sm:mt-6 leading-relaxed italic text-base sm:text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 text-gray-800 dark:text-gray-200">
+              <span class="sm:text-base sm:text-inherit">{heroSection.subheading1}</span>
+              <span class="sm:text-base sm:text-inherit">{heroSection.subheading2}</span>
+              <span class="sm:text-base sm:text-inherit">{heroSection.subheading3}</span>
+            </SubTitle>
+          </div>
+        </div>
+        <div class="flex justify-center lg:justify-start animate-fade-in-up animation-delay-400 pt-2 sm:pt-4">
+          <CtaButton>
+            {heroSection.buttonText}
+          </CtaButton>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Corte triangular mejorado -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+    <svg class="relative block w-full h-[50px] sm:h-[75px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-base-100 dark:fill-base-dark-900"></path>
+    </svg>
+  </div>
 </section>
+
+<style>
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .parallax-bg {
+    transform: translateY(var(--scroll-offset, 0));
+    transition: transform 0.1s linear;
+  }
+</style>
+
+<script>
+  // Efecto parallax suave
+  document.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    document.documentElement.style.setProperty('--scroll-offset', `${scrolled * 0.5}px`);
+  });
+</script>
