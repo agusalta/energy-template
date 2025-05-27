@@ -4,8 +4,7 @@ export const environmentalImpactSection = {
   title: "Compromiso Ambiental",
   subheading1_1: "Eligiendo MGarden para un",
   subheading1_2: "Futuro Más Verde y Saludable",
-  description:
-    "En MGarden, estamos comprometidos con la sanidad ambiental y el cuidado del medio ambiente. Al elegir nuestros servicios integrales de jardinería, contribuis al:",
+  description: "En MGarden, cada servicio está diseñado para cuidar el planeta. Al elegirnos, contribuís a:",
   impactPoints: [
     "Reciclaje de Residuos Orgánicos",
     "Creación de Compost Natural como Fertilizante",

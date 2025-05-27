@@ -27,10 +27,10 @@ const { className } = Astro.props;
         {environmentalImpactSection.subheading1_1}
         <GradiantText>{environmentalImpactSection.subheading1_2}</GradiantText>
       </SubTitle2>
-      <Paragraph className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out delay-200">
+      <Paragraph className="transform translate-y-4 transition-all duration-700 ease-out delay-200">
         {environmentalImpactSection.description}
       </Paragraph>
-      <ul class="mt-8 space-y-4 text-heading-3">
+      <ul class="mt-8 space-y-2 text-heading-3">
         {
           environmentalImpactSection.impactPoints.map((point, index) => {
             const delay = (index + 3) * 100; // Empezamos desde 300ms para dar tiempo a la animación del título

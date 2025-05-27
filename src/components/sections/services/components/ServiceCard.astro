@@ -25,7 +25,7 @@ const animation = `duration-300 ease-linear`;
     height="400"
     class=`
     w-full h-96 object-cover
-    ${animation} group-hover:scale-125
+    ${animation} md:group-hover:scale-125
     `
   />
   <!-- <Image
@@ -41,15 +41,15 @@ const animation = `duration-300 ease-linear`;
   <div
     class=`
   absolute top-0 h-full w-full bg-gradi
-  bg-gradient-to-b from-black/20 to-black/60 
-  ${animation} group-hover:bg-black/60
+  bg-gradient-to-b from-black/30 via-black/50 to-black/80 
+  ${animation} md:group-hover:bg-black/70
   `
   >
   </div>
   <div
     class=`
     absolute flex flex-col bottom-0 w-full 
-    translate-y-[calc(100%-7.5rem)] group-hover:translate-y-0
+    translate-y-0 md:translate-y-[calc(100%-7.5rem)] md:group-hover:translate-y-0
     content-center
     ${animation}
     `
@@ -59,10 +59,8 @@ const animation = `duration-300 ease-linear`;
         {title}
       </Title3>
     </div>
-    <div
-      class=`self-baseline m-6 opacity-0 group-hover:opacity-100 ${animation}`
-    >
-      <div class="text-md text-white">
+    <div class="self-baseline m-6">
+      <div class="text-md text-white drop-shadow-lg">
         {description}
       </div>
     </div>
