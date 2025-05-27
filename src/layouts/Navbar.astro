@@ -8,30 +8,32 @@ const navItems = [
   {
     href: "/",
     text: "Inicio",
+    ariaLabel: "Ir a la página de inicio"
   },
-  // {
-  //   href: "#hero",
-  //   text: "Hero",
-  // },
   {
     href: "/#services",
     text: "Servicios",
+    ariaLabel: "Ver nuestros servicios"
   },
   {
     href: "/#innovations",
     text: "Innovaciones",
+    ariaLabel: "Conocer nuestras innovaciones"
   },
   {
     href: "/#testimonials",
     text: "Testimonios",
+    ariaLabel: "Leer testimonios de clientes"
   },
   {
     href: "/#environment",
     text: "Medio Ambiente",
+    ariaLabel: "Información sobre nuestro compromiso ambiental"
   },
   {
     href: "/#projects",
     text: "Proyectos",
+    ariaLabel: "Ver nuestros proyectos realizados"
   },
 ];
 ---
@@ -58,7 +60,7 @@ const navItems = [
     <nav class="w-full flex justify-between items-center py-6 transition-all duration-300" id="nav-content">
       <!-- Logo -->
       <div class="min-w-max inline-flex relative group">
-        <a href="/" class="relative flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:rotate-1">
+        <a href="/" class="relative flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:rotate-1" aria-label="Ir a la página de inicio de MGarden">
           <div class="relative h-14 overflow-hidden flex items-center gap-4">
             <span class="text-4xl font-bold bg-gradient-to-r from-cta to-cta bg-clip-text text-transparent dark">MGarden</span>
             <svg class="h-12 w-12 fill-primary absolute bottom-4 left-16 transition-transform duration-300 group-hover:rotate-12" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +98,7 @@ const navItems = [
         <div
           class="lg:min-w-max flex items-center sm:w-max w-full pb-6 lg:pb-0 border-b border-gray-200 dark:border-gray-700 lg:border-0 px-6 lg:px-0 lg:ml-12"
         >
-          <a href="/#cta" class="w-full sm:w-max">
+          <a href="/#cta" class="w-full sm:w-max" aria-label="Ir a la sección de contacto">
             <CtaButton>
               Contacto
             </CtaButton>
@@ -136,46 +138,31 @@ const navItems = [
   // Script para manejar el cambio de tamaño del navbar al hacer scroll
   const navbar = document.getElementById('navbar');
   const navContent = document.getElementById('nav-content');
-  let lastScroll = 0;
 
   if (navbar && navContent) {
+    // Manejo del scroll
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-
-      if (currentScroll <= 0) {
-        // En la parte superior
-        navbar.classList.remove('shadow-md');
-        navContent.classList.remove('py-2');
-        navContent.classList.add('py-6');
-      } else {
-        // Al hacer scroll
-        navbar.classList.add('shadow-md');
-        navContent.classList.remove('py-6');
-        navContent.classList.add('py-2');
-      }
-
-      lastScroll = currentScroll;
+      const isScrolled = window.scrollY > 0;
+      navbar.classList.toggle('shadow-md', isScrolled);
+      navContent.classList.toggle('py-2', isScrolled);
+      navContent.classList.toggle('py-6', !isScrolled);
     });
 
-    // Ajuste del scroll para las secciones
+    // Manejo del scroll suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+        const targetId = anchor.getAttribute('href');
+        const targetElement = document.querySelector(targetId as string);
         
         if (targetElement) {
           const navbarHeight = navbar.offsetHeight;
-          const offset = 20; // Pequeño offset adicional para mejor visualización
-          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
           
-          // Añadimos un pequeño delay para asegurar que el cálculo sea preciso
-          setTimeout(() => {
-            window.scrollTo({
-              top: targetPosition - navbarHeight - offset,
-              behavior: 'smooth'
-            });
-          }, 100);
+          window.scrollTo({
+            top: targetPosition - navbarHeight - 20,
+            behavior: 'smooth'
+          });
         }
       });
     });

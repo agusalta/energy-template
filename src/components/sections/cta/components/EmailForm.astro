@@ -1,5 +1,5 @@
 ---
-import Button from "../../../shared/Button.astro";
+import ContactForm from "../../../../components/ContactForm";
 import Container from "../../../shared/Container.astro";
 import { z } from "zod";
 
@@ -90,12 +90,12 @@ const formSubmit = `https://formsubmit.co/${email}`;
   <Container>
     <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16">
       <div class="lg:w-1/3">
-        <h2 class="text-3xl font-semibold text-heading-3 mb-4 dark:text-cta">CONTACTÁNOS</h2>
+        <h3 class="text-3xl font-semibold text-heading-3 mb-4 dark:text-cta">CONTACTÁNOS</h3>
         <p class="text-heading-3">
           Escuchamos lo que necesitás y trabajamos con responsabilidad.
         </p>
         <div class="mt-10">
-          <h3 class="text-2xl font-semibold text-heading-3 mb-3 text-primary dark:text-cta">BONUS MULTIGARDEN</h3>
+          <h4 class="text-2xl font-semibold text-heading-3 mb-3 text-primary dark:text-cta">BONUS MULTIGARDEN</h4>
           <ul class="space-y-3">
             <li class="flex items-center text-heading-3">
               <span class="font-bold bg-box-bg rounded-full w-8 h-8 flex justify-center items-center text-primary mr-3">
@@ -113,166 +113,11 @@ const formSubmit = `https://formsubmit.co/${email}`;
         </div>
       </div>
       <div class="lg:w-2/3">
-        <form action={formSubmit} method="POST" class="space-y-6 animate-form" id="contactForm">
-          <input type="hidden" name="_subject" value="📬 Nuevo contacto desde MGarden">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_next" value={"https://mbgarden.netlify.app/gracias"}>
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase">
-        
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label for="nombre" class="block text-sm font-medium text-heading-3 mb-1 form-label">Nombre*</label>
-              <input 
-                type="text" 
-                id="nombre" 
-                name="nombre" 
-                required 
-                class="w-full px-3 py-2 border border-box-border rounded-md shadow-sm bg-box-bg text-gray-900 focus:ring-primary focus:border-primary form-input"
-              />
-              <div class="error-message" id="nombre-error"></div>
-            </div>
-            <div>
-              <label for="apellido" class="block text-sm font-medium text-heading-3 mb-1 form-label">Apellido*</label>
-              <input 
-                type="text" 
-                id="apellido" 
-                name="apellido" 
-                required 
-                class="w-full px-3 py-2 border border-box-border rounded-md shadow-sm bg-box-bg text-gray-900 focus:ring-primary focus:border-primary form-input"
-              />
-              <div class="error-message" id="apellido-error"></div>
-            </div>
-          </div>
-        
-          <div>
-            <label for="email" class="block text-sm font-medium text-heading-3 mb-1 form-label">Email*</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              required 
-              placeholder="johndoe@gmail.com"
-              class="w-full px-3 py-2 border border-box-border rounded-md shadow-sm bg-box-bg text-gray-900 focus:ring-primary focus:border-primary form-input"
-            />
-            <div class="error-message" id="email-error"></div>
-          </div>
-        
-          <div>
-            <label for="telefono" class="block text-sm font-medium text-heading-3 mb-1 form-label">Teléfono*</label>
-            <input 
-              type="tel" 
-              id="telefono" 
-              name="telefono" 
-              required 
-              pattern="[0-9+\-\s()]*"
-              title="Ingrese un número de teléfono válido (solo números, +, -, espacios y paréntesis)"
-              class="w-full px-3 py-2 border border-box-border rounded-md shadow-sm bg-box-bg text-gray-900 focus:ring-primary focus:border-primary form-input"
-            />
-            <div class="error-message" id="telefono-error"></div>
-          </div>
-        
-          <div>
-            <label for="mensaje" class="block text-sm font-medium text-heading-3 mb-1 form-label">¿Cómo podemos ayudarte?</label>
-            <textarea 
-              id="mensaje" 
-              name="mensaje" 
-              rows="4" 
-              class="w-full px-3 py-2 border border-box-border rounded-md shadow-sm bg-box-bg text-gray-900 focus:ring-primary focus:border-primary resize-none form-input"
-            ></textarea>
-            <div class="error-message" id="mensaje-error"></div>
-          </div>
-        
-          <div>
-            <button type="submit" class="min-w-max text-white bg-cta py-2 px-4 rounded-md">
-              <span class="relative z-[5]">Enviar</span>
-            </button>
-          </div>
-        </form>
-        
+        <div class="w-full max-w-2xl mx-auto">
+          <ContactForm client:load />
+        </div>
       </div>
     </div>
   </Container>
 </section>
 
-<script>
-  import { z } from 'zod';
-
-  const formSchema = z.object({
-    nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-    apellido: z.string().min(2, "El apellido debe tener al menos 2 caracteres"),
-    email: z.string().email("Ingrese un email válido"),
-    telefono: z.string()
-      .min(8, "El teléfono debe tener al menos 8 caracteres")
-      .regex(/^[0-9+\-\s()]*$/, "El teléfono solo puede contener números, +, -, espacios y paréntesis"),
-    mensaje: z.string().min(10, "El mensaje debe tener al menos 10 caracteres")
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.animate-form');
-    if (!form) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          (form as HTMLElement).style.animation = 'fadeInUp 0.8s ease-out forwards';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    observer.observe(form);
-
-    // Form validation
-    const contactForm = document.getElementById('contactForm') as HTMLFormElement;
-    
-    const clearErrors = () => {
-      document.querySelectorAll('.error-message').forEach(el => {
-        (el as HTMLElement).textContent = '';
-      });
-      document.querySelectorAll('.input-error').forEach(el => {
-        el.classList.remove('input-error');
-      });
-    };
-
-    const showError = (field: string, message: string) => {
-      const errorElement = document.getElementById(`${field}-error`);
-      const inputElement = document.getElementById(field);
-      
-      if (errorElement) {
-        errorElement.textContent = message;
-      }
-      if (inputElement) {
-        inputElement.classList.add('input-error');
-      }
-    };
-
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      clearErrors();
-
-      const formData = {
-        nombre: (document.getElementById('nombre') as HTMLInputElement).value,
-        apellido: (document.getElementById('apellido') as HTMLInputElement).value,
-        email: (document.getElementById('email') as HTMLInputElement).value,
-        telefono: (document.getElementById('telefono') as HTMLInputElement).value,
-        mensaje: (document.getElementById('mensaje') as HTMLTextAreaElement).value
-      };
-
-      try {
-        const validatedData = formSchema.parse(formData);
-        // Si la validación es exitosa, enviamos el formulario
-        contactForm.submit();
-      } catch (error) {
-        if (error instanceof z.ZodError) {
-          error.errors.forEach((err) => {
-            const field = err.path[0] as string;
-            showError(field, err.message);
-          });
-        }
-      }
-    });
-  });
-</script>
