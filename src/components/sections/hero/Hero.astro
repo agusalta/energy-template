@@ -1,7 +1,5 @@
 ---
-import { Image, Picture } from "astro:assets";
-import heroImg from "./assets/wind3.jpg";
-import CtaButton from "../../shared/CtaButton.astro";
+import heroImg from "./assets/jardin.webp";
 import GradiantText from "../../shared/GradiantText.astro";
 import SubTitle from "../../shared/SubTitle.astro";
 import Title from "../../shared/Title.astro";
@@ -29,11 +27,13 @@ const { className = "" } = Astro.props;
 <section class={`relative ${className} w-full min-h-[85vh] sm:min-h-[100vh] flex items-center py-12 sm:py-24 md:py-32 overflow-hidden`} id="hero">
   <!-- Fondo con efecto parallax -->
   <div class="absolute inset-0 bg-gradient-to-b from-base-100/95 via-base-100/80 to-base-100/60 dark:from-base-dark-900/95 dark:via-base-dark-900/80 dark:to-base-dark-900/60 z-10"></div>
-  <div class="w-full h-full absolute transform scale-110">
+  <div class="w-full h-full absolute transform scale-110 overflow-hidden">
     <LazyImage
       src={heroImg}
       alt="Imagen de jardín en mantenimiento"
-      className="w-full h-full object-cover parallax-bg fade-in-bg"
+      className="w-full h-full object-cover hero-bg-image"
+      loading="eager"
+      decoding="async"
     />
   </div>
   
@@ -108,22 +108,26 @@ const { className = "" } = Astro.props;
     }
   }
 
-  .parallax-bg {
-    transform: translateY(var(--scroll-offset, 0));
-    transition: transform 0.1s linear;
-  }
-
-  .fade-in-bg {
-    animation: fadeIn 1.5s ease-out forwards;
+  .hero-bg-image {
     opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+    transform: scale(1.1);
+    will-change: transform;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
+      transform: scale(1.1);
     }
     to {
       opacity: 1;
+      transform: scale(1);
     }
   }
 
@@ -134,9 +138,38 @@ const { className = "" } = Astro.props;
 </style>
 
 <script>
-  // Efecto parallax suave
-  document.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    document.documentElement.style.setProperty('--scroll-offset', `${scrolled * 0.5}px`);
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroImage = document.querySelector('.hero-bg-image') as HTMLElement;
+    
+    if (!heroImage) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateParallax() {
+      const currentScroll = window.scrollY;
+      const scrollDiff = currentScroll - lastScrollY;
+      
+      // Calculamos la nueva posición
+      const currentTop = parseFloat(getComputedStyle(heroImage).top) || 0;
+      const newTop = currentTop + (scrollDiff * 0.5);
+      
+      // Aplicamos la transformación
+      heroImage.style.top = `${newTop}px`;
+      
+      lastScrollY = currentScroll;
+      ticking = false;
+    }
+
+    // Añadimos el evento de scroll
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Inicializar
+    updateParallax();
   });
 </script>

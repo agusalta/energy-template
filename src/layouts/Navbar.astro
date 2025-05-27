@@ -137,24 +137,31 @@ const navItems = [
   const navbar = document.getElementById('navbar');
   const navContent = document.getElementById('nav-content');
   let lastScroll = 0;
+  let ticking = false;
 
   if (navbar && navContent) {
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScroll = window.pageYOffset;
 
-      if (currentScroll <= 0) {
-        // En la parte superior
-        navbar.classList.remove('shadow-md');
-        navContent.classList.remove('py-2');
-        navContent.classList.add('py-6');
-      } else {
-        // Al hacer scroll
-        navbar.classList.add('shadow-md');
-        navContent.classList.remove('py-6');
-        navContent.classList.add('py-2');
+          if (currentScroll <= 0) {
+            // En la parte superior
+            navbar.classList.remove('shadow-md');
+            navContent.classList.remove('py-2');
+            navContent.classList.add('py-6');
+          } else {
+            // Al hacer scroll
+            navbar.classList.add('shadow-md');
+            navContent.classList.remove('py-6');
+            navContent.classList.add('py-2');
+          }
+
+          lastScroll = currentScroll;
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      lastScroll = currentScroll;
     });
 
     // Ajuste del scroll para las secciones
@@ -166,16 +173,13 @@ const navItems = [
         
         if (targetElement) {
           const navbarHeight = navbar.offsetHeight;
-          const offset = 20; // Pequeño offset adicional para mejor visualización
+          const offset = 20;
           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
           
-          // Añadimos un pequeño delay para asegurar que el cálculo sea preciso
-          setTimeout(() => {
-            window.scrollTo({
-              top: targetPosition - navbarHeight - offset,
-              behavior: 'smooth'
-            });
-          }, 100);
+          window.scrollTo({
+            top: targetPosition - navbarHeight - offset,
+            behavior: 'smooth'
+          });
         }
       });
     });
