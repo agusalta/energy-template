@@ -1,0 +1,14 @@
+# robots.txt para energy-template
+User-agent: *
+Allow: /
+
+# No permitir acceso a archivos sensibles
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.env$
+Disallow: /*.config$
+
+# Sitemap
+Sitemap: https://mbgarden.netlify.app/sitemap.xml 

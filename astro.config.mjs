@@ -15,6 +15,14 @@ export default defineConfig({
     build: {
       assetsInlineLimit: 0,
       copyPublicDir: true,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
+    server: {
+      compress: true,
     },
   },
 });
