@@ -8,9 +8,10 @@ interface Client {
 
 interface Props {
   clients: Client[];
+  direction?: "left" | "right";
 }
 
-const ClientMarqueeReact = ({ clients }: Props) => {
+const ClientMarqueeReact = ({ clients, direction = "left" }: Props) => {
   const { isDarkMode, setIsDarkMode } = useThemeStore();
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const ClientMarqueeReact = ({ clients }: Props) => {
         gradientWidth={100}
         speed={40}
         pauseOnHover={true}
-        direction="left"
+        direction={direction}
         className="w-full bg-base dark:bg-base-dark [&_.marquee]:dark:!bg-[#1a1a1a]"
       >
         {clients.map((client, index) => (
