@@ -1,0 +1,50 @@
+---
+import Container from "../components/shared/Container.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-content {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+</style>
+
+<Layout title="Gracias!">
+  <section class="min-h-[calc(100vh-80px)] flex items-center justify-center py-20 md:py-24 px-4 sm:px-6 mt-20">
+    <Container>
+      <div class="max-w-2xl mx-auto text-center animate-content">
+        <div class="mb-6 md:mb-8 p-2">
+          <svg class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold text-heading-3 mb-3 md:mb-4 dark:text-cta">
+          ¡Gracias por contactarnos!
+        </h1>
+        
+        <p class="text-base md:text-lg text-heading-3 mb-6 md:mb-8">
+          Recibimos tu mensaje correctamente. <br class="hidden sm:block"/> Nos vamos a poner en contacto lo antes posible.
+        </p>
+        
+        <a 
+          href="/" 
+          class="inline-block bg-cta text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md hover:bg-opacity-90 transition-all duration-300 text-sm sm:text-base"
+        >
+          Volver al inicio
+        </a>
+      </div>
+    </Container>
+  </section>
+</Layout> 

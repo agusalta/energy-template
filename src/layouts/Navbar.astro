@@ -156,5 +156,28 @@ const navItems = [
 
       lastScroll = currentScroll;
     });
+
+    // Ajuste del scroll para las secciones
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          const navbarHeight = navbar.offsetHeight;
+          const offset = 20; // Pequeño offset adicional para mejor visualización
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          
+          // Añadimos un pequeño delay para asegurar que el cálculo sea preciso
+          setTimeout(() => {
+            window.scrollTo({
+              top: targetPosition - navbarHeight - offset,
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
+      });
+    });
   }
 </script>
