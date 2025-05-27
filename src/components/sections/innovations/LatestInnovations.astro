@@ -25,7 +25,7 @@ const { className } = Astro.props;
       <GradiantText>{innovationsSection.subheading1_2}</GradiantText>
     </SubTitle2>
   </Container>
-  <Container>
+  <Container className="pt-6">
     {
       innovationsSection.innovations.map((solution, index: number) => {
         const oddIndex = index % 2 === 0;
@@ -47,7 +47,7 @@ const { className } = Astro.props;
                   />
                 </div>
               </div>
-              <div class="max-w-md mx-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col">
+              <div class="max-w-md mx-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col justify-center">
                 <Title3>{solution.title}</Title3>
                 <Paragraph className="mt-3">{solution.description}</Paragraph>
               </div>
