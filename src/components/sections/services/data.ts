@@ -1,9 +1,9 @@
-import img1 from "./assets/solar3.png";
-import img2 from "./assets/wind.png";
-import img3 from "./assets/hydro.png";
-import img4 from "./assets/storage.png";
-import img5 from "./assets/smart-grid.png";
-import img6 from "./assets/green.png";
+import img1 from "./assets/01.webp";
+import img2 from "./assets/02.webp";
+import img3 from "./assets/21.webp";
+import img4 from "./assets/11.webp";
+import img5 from "./assets/20.webp";
+import img6 from "./assets/03.webp";
 
 export const servicesSectionData = {
   title: "Servicios",

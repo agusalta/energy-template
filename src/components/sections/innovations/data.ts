@@ -1,6 +1,6 @@
-import imgGrid from "./assets/inno-grid.webp";
-import imgSolar from "./assets/inno-panel.webp";
-import imgWind from "./assets/inno-wind.webp";
+import imgGrid from "./assets/13.webp";
+import imgSolar from "./assets/10.webp";
+import imgWind from "./assets/05.webp";
 
 export const innovationsSection = {
   title: "Servicios Complementarios",

@@ -1,4 +1,4 @@
-import img from "./assets/green-hands.png";
+import img from "./assets/16.webp";
 
 export const environmentalImpactSection = {
   title: "Compromiso Ambiental",
