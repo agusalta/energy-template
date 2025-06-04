@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
-import { useThemeStore } from '../../../../store/themeStore';
 
 interface Client {
   name: string;
@@ -12,26 +11,19 @@ interface Props {
 }
 
 const ClientMarqueeReact = ({ clients, direction = "left" }: Props) => {
-  const { isDarkMode, setIsDarkMode } = useThemeStore();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const darkModeClass = document.documentElement.classList.contains('dark');
+    const updateTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    };
 
-    setIsDarkMode(darkModeClass || darkModeMediaQuery.matches);
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          setIsDarkMode(document.documentElement.classList.contains('dark'));
-        }
-      });
-    });
-
+    updateTheme();
+    const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, { attributes: true });
 
     return () => observer.disconnect();
-  }, [setIsDarkMode]);
+  }, []);
 
   return (
     <div className="w-[80%] mx-auto">
