@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
-  site: "https://mbgarden.netlify.app/",
+  site: "https://mgarden.com.ar/",
   // base: "/energy-template", // Comentamos o eliminamos esta línea
   build: {
     assets: "_assets",

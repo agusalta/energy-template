@@ -1,0 +1,73 @@
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Años en el negocio -->
+      <div class="text-center p-8 rounded-lg bg-white dark:bg-base-dark-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div id="yearsCounter" class="text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">0</div>
+        <h3 class="text-xl font-bold text-base-950 dark:text-base-100 mb-2">Años en el Negocio</h3>
+        <p class="text-base-600 dark:text-base-300">Paisajismo, mantenimiento y pasión por lo natural desde 1985</p>
+      </div>
+
+      <!-- Clientes recurrentes -->
+      <div class="text-center p-8 rounded-lg bg-white dark:bg-base-dark-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div id="clientsCounter" class="text-5xl font-bold text-secondary-600 dark:text-secondary-400 mb-4">0</div>
+        <h3 class="text-xl font-bold text-base-950 dark:text-base-100 mb-2">Clientes</h3>
+        <p class="text-base-600 dark:text-base-300">Relaciones duraderas y satisfacción garantizada</p>
+      </div>
+
+      <!-- Servicios -->
+      <div class="text-center p-8 rounded-lg bg-white dark:bg-base-dark-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div id="servicesCounter" class="text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">0</div>
+        <h3 class="text-xl font-bold text-base-950 dark:text-base-100 mb-2">Servicios</h3>
+        <p class="text-base-600 dark:text-base-300">Ofrecemos soluciones integrales para cada necesidad</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { CountUp } from 'countup.js';
+
+  function initCounters() {
+    const yearsCounter = new CountUp('yearsCounter', 40, {
+      duration: 2.5,
+      useEasing: true,
+      useGrouping: true,
+      separator: ',',
+      enableScrollSpy: true,
+      scrollSpyOnce: true,
+    });
+
+    const clientsCounter = new CountUp('clientsCounter', 15, {
+      duration: 2.5,
+      useEasing: true,
+      useGrouping: true,
+      separator: ',',
+      suffix: '+',
+      enableScrollSpy: true,
+      scrollSpyOnce: true,
+    });
+
+    const servicesCounter = new CountUp('servicesCounter', 10, {
+      duration: 2.5,
+      useEasing: true,
+      useGrouping: true,
+      separator: ',',
+      suffix: '+',
+      enableScrollSpy: true,
+      scrollSpyOnce: true,
+    });
+
+    // Iniciar las animaciones
+    yearsCounter.start();
+    clientsCounter.start();
+    servicesCounter.start();
+  }
+
+  // Asegurarse de que el DOM esté completamente cargado
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
+  }
+</script> 

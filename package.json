@@ -16,6 +16,7 @@
     "@types/react": "^18.3.22",
     "@types/react-dom": "^18.3.7",
     "astro": "^4.2.6",
+    "countup.js": "^2.9.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.5",

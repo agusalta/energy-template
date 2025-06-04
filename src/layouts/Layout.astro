@@ -5,12 +5,20 @@ import heroImg from "../components/sections/hero/assets/jardin.webp";
 
 export interface Props {
   title: string;
+  description?: string;
+  canonicalURL?: string;
+  ogImage?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title, 
+  description = "MGarden - Sistema Integral de Espacios Verdes. Especialistas en mantenimiento profesional de parques y jardines para empresas, countries y consorcios.",
+  canonicalURL = Astro.url.href,
+  ogImage = "https://mgarden.com.ar/mgarden-og.webp"
+} = Astro.props;
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <!-- Preconnect para recursos externos -->
@@ -20,18 +28,43 @@ const { title } = Astro.props;
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preload" href={heroImg.src} as="image" type="image/webp" fetchpriority="high" />
     
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Meta tags básicos -->
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Sistema Integral de Espacios Verdes."
-    />
-    <title>MGARDEN - {title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="jardinería, mantenimiento de jardines, espacios verdes, paisajismo, empresas, countries, consorcios" />
+    <meta name="author" content="MGarden" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`MGarden - ${title}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_AR" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`MGarden - ${title}`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <!-- Título de la página -->
+    <title>MGarden - {title}</title>
+    
+    <!-- Fuentes y estilos -->
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"

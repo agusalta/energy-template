@@ -8,7 +8,7 @@ export const projectsSection = {
   subheading1_2: "Proyectos de Paisajismo Integral",
   projects: [
     {
-      title: "Country Las Mil Rosas",
+      title: "Estancia Las Mil Rosas",
       description:
         "Transformación completa del paisajismo en este exclusivo club de campo. Implementamos un sistema integral de mantenimiento que incluye forestación especializada, riego por aspersión y control ecológico de plagas.",
       location: "San Martín de los Andes",

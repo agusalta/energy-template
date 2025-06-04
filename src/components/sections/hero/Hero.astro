@@ -24,13 +24,17 @@ export interface Props {
 const { className = "" } = Astro.props;
 ---
 
-<section class={`relative ${className} w-full min-h-[85vh] sm:min-h-[100vh] flex items-center py-12 sm:py-24 md:py-32 overflow-hidden`} id="hero">
+<section 
+  class={`relative ${className} w-full min-h-[85vh] sm:min-h-[100vh] flex items-center py-12 sm:py-24 md:py-32 overflow-hidden`} 
+  id="hero"
+  aria-label="Sección principal"
+>
   <!-- Fondo con efecto parallax -->
   <div class="absolute inset-0 bg-gradient-to-b from-base-100/95 via-base-100/80 to-base-100/60 dark:from-base-dark-900/95 dark:via-base-dark-900/80 dark:to-base-dark-900/60 z-10"></div>
   <div class="w-full h-full absolute transform scale-110 overflow-hidden">
     <LazyImage
       src={heroImg}
-      alt="Imagen de jardín en mantenimiento"
+      alt="Imagen de jardín en mantenimiento profesional por MGarden"
       className="w-full h-full object-cover hero-bg-image"
       loading="eager"
       decoding="async"
@@ -38,7 +42,7 @@ const { className = "" } = Astro.props;
   </div>
   
   <!-- Elementos decorativos -->
-  <div class="absolute inset-0 z-10">
+  <div class="absolute inset-0 z-10" aria-hidden="true">
     <div class="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
     <div class="absolute bottom-20 right-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-pulse animation-delay-1000"></div>
   </div>
@@ -72,7 +76,7 @@ const { className = "" } = Astro.props;
   </div>
 
   <!-- Corte triangular mejorado -->
-  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180 -mb-[1px]">
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180 -mb-[1px]" aria-hidden="true">
     <svg class="relative block w-full h-[50px] sm:h-[75px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
       <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-base-100 dark:fill-base-dark-900"></path>
     </svg>

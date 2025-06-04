@@ -1,0 +1,30 @@
+# www.robotstxt.org
+
+# Permitir todos los robots
+User-agent: *
+Allow: /
+
+# Permitir rastreo de imágenes
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /assets/
+
+# No permitir rastreo de archivos de sistema
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.astro/
+
+# No permitir rastreo de archivos específicos
+Disallow: /*.json$
+Disallow: /*.txt$
+Disallow: /*.md$
+Disallow: /*.log$
+
+# Sitemap
+Sitemap: https://mbgarden.netlify.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10 

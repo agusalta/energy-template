@@ -7,6 +7,7 @@ import Hero from "../components/sections/hero/Hero.astro";
 import KeyServices from "../components/sections/services/KeyServices.astro";
 import LatestInnovations from "../components/sections/innovations/LatestInnovations.astro";
 import Clients from "../components/sections/clients/Clients.astro";
+import StatsCounter from "../components/sections/stats/StatsCounter.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -23,11 +24,18 @@ import Layout from "../layouts/Layout.astro";
     <!-- Use engaging visuals and concise text to highlight the benefits. -->
     <!-- Include a call-to-action button leading to detailed service information. -->
 
+    <StatsCounter client:load />
+    <!-- Stats Counter Section: -->
+    <!-- Muestra estadísticas clave de la empresa -->
+    <!-- Refuerza la credibilidad y experiencia -->
+
     <Clients />
     <!-- Clients Section: -->
     <!-- Showcase your key clients and partners -->
     <!-- Display logos in a clean, professional layout -->
     <!-- Highlight the trust and credibility of your business -->
+
+  
 
     <LatestInnovations />
     <!-- Latest Innovations: -->
