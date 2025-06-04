@@ -1,6 +1,7 @@
 ---
 import Button from "../../../shared/Button.astro";
 import Container from "../../../shared/Container.astro";
+import CtaButton from "../../../shared/CtaButton.astro";
 import { z } from "zod";
 
 export interface Props {
@@ -184,9 +185,9 @@ const formSubmit = `https://formsubmit.co/${email}`;
           </div>
         
           <div>
-            <button type="submit" class="min-w-max text-white bg-cta py-2 px-4 rounded-md">
-              <span class="relative z-[5]">Enviar</span>
-            </button>
+            <CtaButton color="cta" variant="gradient">
+              Enviar
+            </CtaButton>
           </div>
         </form>
         

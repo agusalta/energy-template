@@ -1,14 +1,24 @@
 ---
 import Button from "./Button.astro";
+
+interface Props {
+  color?: "primary" | "secondary" | "cta";
+  variant?: "solid" | "gradient" | "outline";
+}
+
+const { 
+  color = "primary",
+  variant = "gradient"
+} = Astro.props;
 ---
 
 <Button 
-  color={"secondary"} 
-  variant={"solid"} 
+  color={color} 
+  variant={variant} 
   className={"min-w-max group relative overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-cta/50 focus:outline-none"}
 >
   <span
-    class="flex relative z-[5] font-medium text-lg font-semibold tracking-wide text-white transition-colors duration-300 group-hover:text-white group-active:text-white/90"
+    class="flex relative z-[5] font-medium text-lg font-medium tracking-wide text-black dark:text-white transition-colors duration-300 group-hover:text-black dark:group-hover:text-white group-active:text-black/90 dark:group-active:text-white/90"
   >
     <slot />
   </span>
