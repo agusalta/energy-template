@@ -3,15 +3,15 @@ import Button from "./Button.astro";
 ---
 
 <Button 
-  color={"primary"} 
+  color={"secondary"} 
   variant={"solid"} 
   className={"min-w-max group relative overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-cta/50 focus:outline-none"}
 >
   <span
-    class="flex relative z-[5] font-medium text-lg font-semibold tracking-wide text-accent-light transition-colors duration-300 group-hover:text-white group-active:text-white/90"
+    class="flex relative z-[5] font-medium text-lg font-semibold tracking-wide text-white transition-colors duration-300 group-hover:text-white group-active:text-white/90"
   >
     <slot />
   </span>
-  <div class="absolute inset-0 bg-gradient-to-r from-cta/0 via-cta/20 to-cta/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-cta/0 via-cta/40 to-cta/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
 </Button>

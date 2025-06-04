@@ -17,11 +17,15 @@ const { className } = Astro.props;
   <Container
     className="mx-auto flex flex-col items-center justify-center text-center"
   >
-    <Title2 className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out">{testimonialsSection.title}</Title2>
-    <SubTitle2 className="transform translate-y-4 opacity-0 transition-all duration-700 ease-out delay-100">
-      <GradiantText> {testimonialsSection.subheading1_1}</GradiantText><br />
-      {testimonialsSection.subheading1_2}
-    </SubTitle2>
+    <h2 class="transform translate-y-4 opacity-0 transition-all duration-700 ease-out">
+      <Title2>{testimonialsSection.title}</Title2>
+    </h2>
+    <h3 class="transform translate-y-4 opacity-0 transition-all duration-700 ease-out delay-100">
+      <SubTitle2>
+        <GradiantText>{testimonialsSection.subheading1_1}</GradiantText><br />
+        {testimonialsSection.subheading1_2}
+      </SubTitle2>
+    </h3>
   </Container>
   <Container className="flex flex-col items-center">
     <div
