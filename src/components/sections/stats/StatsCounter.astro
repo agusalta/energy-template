@@ -1,5 +1,20 @@
+---
+import Container from "../../shared/Container.astro";
+import GradiantText from "../../shared/GradiantText.astro";
+import SubTitle2 from "../../shared/SubTitle2.astro";
+import Title2 from "../../shared/Title2.astro";
+---
+
 <section class="py-20">
   <div class="container mx-auto px-4">
+    <Container className="mx-auto flex flex-col items-center justify-center text-center mb-12">
+      <Title2>Nuestros Números</Title2>
+      <SubTitle2>
+        Experiencia y Confianza <br />
+        <GradiantText>en cada proyecto</GradiantText>
+      </SubTitle2>
+    </Container>
+    
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
       <!-- Años en el negocio -->
       <div class="text-center p-8 rounded-lg bg-white dark:bg-base-dark-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -34,8 +49,7 @@
       useEasing: true,
       useGrouping: true,
       separator: ',',
-      enableScrollSpy: true,
-      scrollSpyOnce: true,
+      suffix: '',
     });
 
     const clientsCounter = new CountUp('clientsCounter', 15, {
@@ -44,8 +58,6 @@
       useGrouping: true,
       separator: ',',
       suffix: '+',
-      enableScrollSpy: true,
-      scrollSpyOnce: true,
     });
 
     const servicesCounter = new CountUp('servicesCounter', 10, {
@@ -54,20 +66,39 @@
       useGrouping: true,
       separator: ',',
       suffix: '+',
-      enableScrollSpy: true,
-      scrollSpyOnce: true,
     });
 
-    // Iniciar las animaciones
-    yearsCounter.start();
-    clientsCounter.start();
-    servicesCounter.start();
+    const counters = [
+      { instance: yearsCounter, id: 'yearsCounter' },
+      { instance: clientsCounter, id: 'clientsCounter' },
+      { instance: servicesCounter, id: 'servicesCounter' },
+    ];
+
+    counters.forEach(({ instance, id }) => {
+      const el = document.getElementById(id);
+      if (!instance.error && el) {
+        instance.start();
+
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              instance.reset();
+              instance.start();
+            }
+          },
+          { threshold: 0.5 }
+        );
+
+        observer.observe(el);
+      } else {
+        console.error(`Error con el contador ${id}:`, instance.error);
+      }
+    });
   }
 
-  // Asegurarse de que el DOM esté completamente cargado
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCounters);
   } else {
     initCounters();
   }
-</script> 
+</script>
