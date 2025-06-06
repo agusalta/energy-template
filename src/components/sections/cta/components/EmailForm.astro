@@ -115,9 +115,10 @@ const formSubmit = `https://formsubmit.co/${email}`;
       <div class="lg:w-2/3">
         <form action={formSubmit} method="POST" class="space-y-6 animate-form" id="contactForm">
           <input type="hidden" name="_subject" value="📬 Nuevo contacto desde MGarden">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_next" value="https://mgarden.com.ar/gracias">
-          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value={Astro.url.origin + "/gracias"}>
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_autoresponse" value="Gracias por contactarnos. Nos pondremos en contacto contigo pronto.">
           <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase">
         
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
