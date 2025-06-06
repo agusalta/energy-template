@@ -1,5 +1,4 @@
 ---
-import Button from "../../../shared/Button.astro";
 import Container from "../../../shared/Container.astro";
 import CtaButton from "../../../shared/CtaButton.astro";
 import { z } from "zod";
@@ -20,7 +19,7 @@ const formSchema = z.object({
   mensaje: z.string().min(10, "El mensaje debe tener al menos 10 caracteres")
 });
 
-const email = "agusalta002@gmail.com";
+const email = "mgardencontacto@gmail.com";
 const formSubmit = `https://formsubmit.co/${email}`;
 ---
 
